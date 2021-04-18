@@ -1,13 +1,20 @@
 @keyframes fadeIn {
-    0% {opacity: 1;}
-    25% {opacity: 0;}
-    75% {opacity: 0;}
-    100% {opacity: 1;}
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn_text {
+    from {opacity: 0.25;}
+    to {opacity: 1;}
 }
 
 html, body {
     width: 100%;
     height: 100%;
+}
+
+html {
+    overflow: overlay;
 }
 
 body {
@@ -59,8 +66,12 @@ h4 {
 .greetings {
     position: relative;
     text-align: center;
+    align-items: center;
     display : none;
-    font-size: 30px;
+    width: 100%;
+    height: 8vh;
+    padding: 1% 0;
+    font-size: 40px;
     text-shadow: 1px 0px 40px rgb(26, 25, 25),
     -1px 0px 40px rgb(26, 25, 25),
     0px 1px 40px rgb(26, 25, 25),
@@ -71,18 +82,24 @@ h4 {
     position: relative;
     display: none;
     text-align: center;
+    width: 100%;
+    height: 5vh;
 }
 
 .showing {
     position: relative;
     display : block;
-    font-size: 40px;
+    animation: fadeIn_text 0.3s linear;
 }
 
 ul {
     position: relative;
     list-style: none;
     text-align: center;
+    text-shadow: 1px 0px 20px rgb(26, 25, 25),
+    -1px 0px 20px rgb(26, 25, 25),
+    0px 1px 20px rgb(26, 25, 25),
+    0px -1px 20px rgb(26, 25, 25);
 }
 
 .weather {
@@ -101,12 +118,13 @@ ul {
 
 .bgImage {
     position: absolute;
+    object-fit: cover;
     top: 0;
     left: 0;
     width: 100%;
     height: auto;
     z-index: -1;
-    animation: fadeIn 2s linear -1.5s
+    animation: fadeIn 0.6s linear;
 }
 
 input[type=text] {
