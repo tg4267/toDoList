@@ -11,7 +11,13 @@ function getWeather(lat, lon){
         }).then(function(json){
             const temp = json.main.temp;
             const place = json.name;
-            weather.innerText = `${temp} @ ${place}`
+            const weatherId = json.weather[0].icon;
+            const img = document.createElement("img")
+            img.src = `http://openweathermap.org/img/wn/${weatherId}@2x.png`;
+            const text = document.createElement("span")
+            text.innerText = `${temp} @ ${place}`;
+            weather.appendChild(img);
+            weather.appendChild(text);
         })
 }
 
