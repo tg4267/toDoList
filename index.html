@@ -6,6 +6,10 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="screen_size.css">
+    <link href="http://fonts.googleapis.com/earlyaccess/nanumpenscript.css" rel="stylesheet">
+    <style>
+        .np{font-family: 'Nanum Pen Script', cursive;}
+    </style>
 </head>
 
 <body>
@@ -20,14 +24,16 @@
     </header>
     <main>
         <form class="js-form form">
-            <input type="text" placeholder="What is your name?"/>
+            <input type="text" class = "askName" placeholder="What is your name?"/>
         </form>
-        <h4 class="js-greetings greetings"></h4>
-        <form class="js-toDoForm toDoForm">
-            <input type="text" placeholder="Make your To-Dos"/>
-        </form>
-        <ul class="js-toDoList toDoList">
-        </ul>  
+        <div class="js-greetingsBox greetingBox">
+            <span class="js-greetings greetings"></span>
+        </div>
+        <div class="js-toDoBox toDoBox">
+            <form class="js-toDoForm toDoForm np">
+                <input type="text" class="IPTXT" placeholder="Make your To-Dos"/>
+            </form>
+        </div>
     </main>
     <script src="weather.js"></script>
     <script src="clock.js"></script>

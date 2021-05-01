@@ -1,6 +1,6 @@
 const toDoForm = document.querySelector(".js-toDoForm"),
     toDoInput = toDoForm.querySelector("input"),
-    toDoList = document.querySelector(".js-toDoList");
+    toDoList = document.querySelector(".js-toDoBox");
 
 const TODOS_LS = "ToDos";
 
@@ -16,6 +16,7 @@ function deleteToDo(event){
         return toDo.id !== parseInt(li.id);
     });
     toDos = cleanToDos;
+    borderTopDelete();
     saveToDos();
 }
 
@@ -26,15 +27,19 @@ function saveToDos(){
 function paintToDo(text){
     const li = document.createElement("li");
     const delBtn = document.createElement("button");
+    delBtn.className = "delBtn";
     delBtn.innerText = "❌";
     delBtn.addEventListener("click", deleteToDo);
     const span = document.createElement("span");
+    span.className = "toDoText"
     span.innerText = text;
     const newId = toDos.length + clickStacks + 1;
     li.appendChild(span);
     li.appendChild(delBtn);
     li.id = newId;
+    li.className = "np";
     toDoList.appendChild(li);
+    toDoList.appendChild(toDoForm);
     const toDoObj = {
         text: text,
         id: newId
@@ -48,6 +53,7 @@ function handleSubmit(event){
     const currentValue = toDoInput.value;
     paintToDo(currentValue);
     toDoInput.value = "";
+    borderTopDelete();
 }
 
 function loadToDos(){
@@ -60,11 +66,22 @@ function loadToDos(){
     }
 }
 
+function borderTopDelete(){
+    const listNum = toDoList.childElementCount;
+    const topNum = Math.floor(listNum / 7);
+    for (let i = 0; i < listNum; i++){
+        toDoList.children[i].className = "np";
+    }
 
+    for (let i = 0; i <= topNum; i++){
+        toDoList.children[i*7].classList.add("delTop");
+    }
+}
 
 function init() {
     loadToDos();
     toDoForm.addEventListener("submit", handleSubmit);
+    borderTopDelete();
 }
 
 init();
