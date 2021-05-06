@@ -12,7 +12,7 @@ function saveName(text){
     localStorage.setItem(USER_LS, text);
 }
 
-function handleSubmit(event){
+function greetingHandleSubmit(event){
     event.preventDefault();
     const currentValue = input.value;
     paintGreeting(currentValue);
@@ -21,12 +21,13 @@ function handleSubmit(event){
 
 function askForName(){
     greetingForm.classList.add(SHOWING_CN);
-    greetingForm.addEventListener("submit", handleSubmit);
+    greetingForm.addEventListener("submit", greetingHandleSubmit);
 }
 
 function fixName(event){
+    localStorage.removeItem(USER_LS);
     greeting.classList.remove("showing");
-    greetingForm.classList.add("showing");
+    askForName();
 }
 
 function paintGreeting(text){

@@ -115,7 +115,7 @@ function paintFinToDo(text){
     saveToDos();
 }
 
-function handleSubmit(event){
+function toDoHandleSubmit(event){
     event.preventDefault();
     const currentValue = toDoInput.value;
     paintToDo(currentValue);
@@ -151,7 +151,7 @@ function borderTopDelete(){
 
 function init() {
     loadToDos();
-    toDoForm.addEventListener("submit", handleSubmit);
+    toDoForm.addEventListener("submit", toDoHandleSubmit);
     borderTopDelete();
 }
 
